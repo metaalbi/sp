@@ -1,72 +1,601 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Administration Tool - Albi Meta</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <meta name="description" content="Case study of a financial administration tool built with PowerApps by Albi Meta">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Albi Meta - Power Platform Specialist</title>
+  <style>
+    :root {
+      --primary: #0078d4;
+      --secondary: #106ebe;
+      --light: #f3f2f1;
+      --dark: #323130;
+      --accent: #ffaa44;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #fff;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    header h1 {
+      display: inline-flex;
+      align-items: center;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .linkedin-icon {
+      margin-left: 0.5rem;
+      display: inline-flex;
+      vertical-align: middle;
+    }
+    
+    .linkedin-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary);
+    }
+    
+    .about {
+      background-color: white;
+      padding: 3rem 0;
+    }
+    
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    /* Company images styling */
+    .company-images {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .company-images img {
+      max-width: 200px;
+      height: auto;
+    }
+    
+    .services {
+      background-color: var(--light);
+      padding: 3rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background-color: var(--accent);
+      margin: 0.5rem auto;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .service-card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .service-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .portfolio {
+      padding: 3rem 0;
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .portfolio-item {
+      background-color: var(--light);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    
+    .portfolio-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Portfolio image placeholder styling */
+    .portfolio-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .portfolio-content {
+      padding: 1.5rem;
+    }
+    
+    .portfolio-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .business-plan {
+      background-color: white;
+      padding: 3rem 0;
+    }
+    
+    .pricing-table {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .pricing-card {
+      background-color: var(--light);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .pricing-header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1.5rem;
+    }
+    
+    .pricing-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-price {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    
+    .pricing-features {
+      padding: 1.5rem;
+    }
+    
+    .pricing-features ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .pricing-features li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .pricing-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .consultation {
+      background-color: var(--light);
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    .form-submit,
+    .consultation a.btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+    
+    .form-submit:hover,
+    .consultation a.btn:hover {
+      background-color: var(--secondary);
+    }
+    
+    /* Timeline / Approach section styling */
+    .approach {
+      background-color: var(--light);
+      padding: 3rem 0;
+    }
+    
+    .approach h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 2rem 0;
+    }
+    
+    /* Horizontal line connecting timeline steps */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary);
+      z-index: 0;
+    }
+    
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    
+    .timeline-step:hover {
+      transform: scale(1.05);
+    }
+    
+    .timeline-circle {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-content {
+      text-align: center;
+      max-width: 150px;
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .timeline {
+        flex-direction: column;
+      }
+      
+      .timeline::before {
+        display: none;
+      }
+      
+      .timeline-step {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Albi Meta</h1>
-            <p>Automation & Solutions Specialist | Power Platform Developer | IT Operations Expert</p>
-        </div>
-    </header>
-    
+  <header>
     <div class="container">
-        <div class="project-details">
-            <h1>Financial Administration Tool</h1>
-            <div class="project-meta">
-                <p><strong>Client:</strong> International Organization</p>
-                <p><strong>Duration:</strong> 6 weeks</p>
-                <p><strong>Technologies:</strong> PowerApps, Power Automate, SharePoint</p>
-            </div>
-            
-            <section class="project-section">
-                <h2>Project Overview</h2>
-                <p>Designed and developed a comprehensive financial administration tool using PowerApps to streamline invoice processing and approval workflows.</p>
-            </section>
-            
-            <section class="project-section">
-                <h2>Challenge</h2>
-                <p>The client's finance department was struggling with manual invoice processing, which led to delays, inconsistent approvals, and poor tracking of payment deadlines.</p>
-            </section>
-            
-            <section class="project-section">
-                <h2>Solution</h2>
-                <p>I created a custom PowerApp integrated with SharePoint and Power Automate workflows that:</p>
-                <ul>
-                    <li>Allowed project officers to submit invoices digitally with automatic information validation</li>
-                    <li>Implemented a multi-level approval system based on organizational hierarchy</li>
-                    <li>Generated automated notifications for deadlines and pending approvals</li>
-                    <li>Created comprehensive reporting dashboards for financial oversight</li>
-                </ul>
-            </section>
-            
-            <section class="project-section">
-                <h2>Results</h2>
-                <ul>
-                    <li>Reduced invoice processing time by 60%</li>
-                    <li>Improved payment accuracy by eliminating manual data entry errors</li>
-                    <li>Enhanced visibility into financial obligations and payment schedules</li>
-                    <li>Provided audit trail for all financial transactions</li>
-                </ul>
-            </section>
-            
-            <a href="../index.html" class="btn">Back to Portfolio</a>
-        </div>
+      <h1>
+        Albi Meta
+        <a href="https://www.linkedin.com/in/albi-meta1/" target="_blank" class="linkedin-icon" title="Connect on LinkedIn">
+          <!-- LinkedIn SVG Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.3c-.966 0-1.75-.783-1.75-1.75 0-.966.784-1.75 1.75-1.75s1.75.784 1.75 1.75c0 .967-.784 1.75-1.75 1.75zm13.5 11.3h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.3c.66-.979 2.183-1.3 3.25-1.3 2.21 0 4 1.79 4 4v5.7z"/>
+          </svg>
+        </a>
+      </h1>
+      <p>Automation &amp; Solutions Specialist | Power Platform Developer | IT Operations Expert</p>
     </div>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Albi Meta. All rights reserved.</p>
-            <p>Based in Vienna, Austria</p>
-            <p><a href="https://www.linkedin.com/in/albi-meta1/" style="color: white; text-decoration: underline;">Connect on LinkedIn</a></p>
+  </header>
+  
+  <section class="hero">
+    <div class="container">
+      <h1>Transforming Business Processes with Microsoft Power Platform</h1>
+      <p>
+        Experienced IT Operations and Digital Workspace Specialist with a proven track record in managing cloud migrations, implementing solutions, and automating workflows using Microsoft 365 tools.
+      </p>
+      <a href="#consultation" class="btn">Book a Free Consultation</a>
+    </div>
+  </section>
+  
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            With over five years of experience in the IT industry, I excel at transforming business processes with innovative solutions.
+          </p>
+          <p>
+            My background includes work at the International Anti-Corruption Academy and previously at the European Union Agency for Fundamental Rights.
+          </p>
+          <!-- Company images -->
+          <div class="company-images">
+            <img src="assets\images\IACA_logo.jpg" alt="IACA" />
+            <img src="assets\images\FRA_logo.png" alt="FRA" />
+          </div>
         </div>
-    </footer>
-    
-    <script src="../assets/js/main.js"></script>
+      </div>
+    </div>
+  </section>
+  
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3 class="service-title">Custom Application Development</h3>
+          <p>
+            Tailored Power Apps solutions designed specifically for your business needs, from simple forms to complex business applications that optimize your operations.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3 class="service-title">Workflow Automation</h3>
+          <p>
+            Streamline your business processes with Power Automate workflows that save time, reduce errors, and increase productivity across your organization.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3 class="service-title">Microsoft 365 Optimization</h3>
+          <p>
+            Maximize your existing Microsoft subscriptions integrated workflows to enhance collaboration.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3 class="service-title">IT Operations Support</h3>
+          <p>
+            Expert support for your IT infrastructure with a focus on cloud solutions, system administration, and security implementation using Azure and Intune.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎓</div>
+          <h3 class="service-title">Digital Workspace Solutions</h3>
+          <p>
+            Design and implementation of collaboration tools that enhance your team's productivity.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📝</div>
+          <h3 class="service-title">CRM and ERP Implementation</h3>
+          <p>
+            Setup and configuration of Salesforce CRM and other customer relationship management tools to streamline your sales and customer service processes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <!-- Project image placeholder -->
+          <img src="project1.jpg" alt="Project 1" class="portfolio-img" />
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Financial Administration Tool</h3>
+            <p>
+              Developed a robust finance tool using PowerApps to manage incoming/outgoing invoices, generate PDFs, track budget expenses, implement a three-layer approval process, and provide data extraction and reminders—reducing administrative workload by over 35%.
+            </p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="project2.jpg" alt="Project 2" class="portfolio-img" />
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Infrmation Management System</h3>
+            <p>
+              Developed a customized, small-scale ERP system to manage various requests—timesheets, payroll, and more—offering management an efficient way to track team requests and reduce administrative work. By automating payroll processes and timesheet submissions (including project costs and overtime), it significantly streamlines operations.
+            </p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="project3.jpg" alt="Project 3" class="portfolio-img" />
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Document Management System and Intranet</h3>
+            <p>
+              Led the planning, design, and implementation of a new Document Management System featuring file sharing, content types, and metadata—an often-overlooked project until locating the right information becomes a challenge.
+            </p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="project4.jpg" alt="Project 4" class="portfolio-img" />
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">HR and Finance Automation</h3>
+            <p>
+              Automated various workflows to reduce HR and Finance workloads by eliminating paper submissions and digitizing processes, improving overall efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="approach" id="approach">
+    <div class="container">
+      <h3>My Approach</h3>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-circle">1</div>
+          <div class="timeline-content">
+            <h4>Discovery</h4>
+            <p>Understanding your business processes and identifying pain points.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-circle">2</div>
+          <div class="timeline-content">
+            <h4>Design</h4>
+            <p>Crafting a tailored solution architecture to maximize efficiency.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-circle">3</div>
+          <div class="timeline-content">
+            <h4>Development</h4>
+            <p>Building your solution using agile methodologies and iterative feedback.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-circle">4</div>
+          <div class="timeline-content">
+            <h4>Deployment</h4>
+            <p>Implementing the solution with thorough testing, documentation, and training.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="consultation" id="consultation">
+    <div class="container">
+      <h2 class="section-title">Book a Free 30-Minute Consultation</h2>
+      <p style="text-align: center; margin-bottom: 2rem;">
+        Let's discuss your business needs and how I can help you leverage Microsoft Power Platform to improve efficiency and productivity.
+      </p>
+      <a href="mailto:albimetamail@gmail.com" class="btn">Email me directly</a>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Albi Meta. All rights reserved.</p>
+      <p>Based in Vienna, Austria</p>
+      <p>
+        <a href="https://www.linkedin.com/in/albi-meta1/" style="color: white; text-decoration: underline;">Connect on LinkedIn</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
