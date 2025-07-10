@@ -221,9 +221,11 @@
             overflow: hidden;
             display: flex;
             align-items: center;
+            gap: 8px;
             justify-content: center;
         }
 
+        .nav-links {
             .project-image::before {
                 content: '';
                 position: absolute;
@@ -304,6 +306,7 @@
 
         .features-list {
             display: flex;
+            list-style: none;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
@@ -480,7 +483,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>PowerApps Solutions</h1>
-                <div class="subtitle">IT Operations & Digital Workspace Specialist</div>
+                <div class="subtitle">IT Operations, Digital Workspace & Automation Specialist</div>
                 <p>Over 5 years of experience transforming business processes with Microsoft 365 tools at International Anti-Corruption Academy and EU Agency for Fundamental Rights. Specialized in cloud migrations, automation workflows, and innovative PowerApps solutions.</p>
                 <a href="#projects" class="cta-button">View My Projects</a>
             </div>
@@ -711,7 +714,8 @@
                 <div class="social-links">
                     <a href="#" title="LinkedIn">💼</a>
                     <a href="#" title="GitHub">🔗</a>
-                    <a href="#" title="Email">✉️</a>
+                    <!-- In the footer .social-links -->
+                    <a href="mailto:mailalbimeta@gmail.com" title="Email">✉️</a>
                     <a href="#" title="Portfolio">🌐</a>
                 </div>
                 <p>&copy; 2024 Albi's PowerApps Solutions. Transforming businesses through innovative technology.</p>
