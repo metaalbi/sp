@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
   <style>
     /* --------------------------
@@ -256,6 +257,10 @@
       background: rgba(255,255,255,.05); color: var(--text); padding: 12px 14px; font: inherit;
     }
     input:focus, textarea:focus { outline: 2px solid var(--ring); border-color: var(--ms-blue); }
+    .mobile-only { display: none; }
+    @media (max-width: 600px) {
+      .mobile-only { display: inline; }
+    }
 
     /* -------------- Footer -------------- */
     footer { border-top: 1px solid var(--glass-border); background: rgba(10,15,28,.6); }
@@ -545,6 +550,13 @@
         <div class="row reveal">
           <div class="badge" aria-hidden="true">💼</div>
           <div><strong>LinkedIn</strong><br/><a href="https://www.linkedin.com/in/albi-meta1/" target="_blank" style="color:var(--text);text-decoration:none;">linkedin.com/in/albi-meta1</a></div>
+        </div>
+        <div class="row reveal">
+          <div class="badge" aria-hidden="true">💬</div>
+          <div><strong>Telegram</strong><br/>
+            <a href="https://t.me/+355683040771" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;"><i class="bx bxl-telegram"></i> Chat on Telegram</a>
+            <a href="tg://resolve?phone=355683040771" class="mobile-only" style="color:var(--text);text-decoration:none;margin-left:8px;">Open in App</a>
+          </div>
         </div>
         <div class="row reveal">
           <div class="badge" aria-hidden="true">📄</div>
